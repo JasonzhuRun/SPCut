@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-
+using SegmentLibrary;
 namespace SPCut
 {
     /// <summary>
@@ -23,6 +23,7 @@ namespace SPCut
         public MainWindow()
         {
             InitializeComponent();
+            SegmentLibrary.Calculator.Add(1, 2);
         }
     }
 }
