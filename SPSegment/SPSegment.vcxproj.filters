@@ -1,0 +1,941 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="源文件">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="头文件">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="资源文件">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Torch">
+      <UniqueIdentifier>{25a36445-9c3b-4c55-bbec-8adb393ea43e}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Torch\Allocator.cpp">
+      <Filter>Torch</Filter>
+    </ClCompile>
+    <ClCompile Include="Torch\Bagging.cpp">
+      <Filter>Torch</Filter>
+    </ClCompile>
+    <ClCompile Include="Torch\BayesClassifier.cpp">
+      <Filter>Torch</Filter>
+    </ClCompile>
+    <ClCompile Include="Torch\BayesClassifierMachine.cpp">
+      <Filter>Torch</Filter>
+    </ClCompile>
+    <ClCompile Include="Torch\BeamSearchDecoder.cpp">
+      <Filter>Torch</Filter>
+    </ClCompile>
+    <ClCompile Include="Torch\Boosting.cpp">
+      <Filter>Torch</Filter>
+    </ClCompile>
+    <ClCompile Include="Torch\BoostingMeasurer.cpp">
+      <Filter>Torch</Filter>
+    </ClCompile>
+    <ClCompile Include="Torch\ClassFormat.cpp">
+      <Filter>Torch</Filter>
+    </ClCompile>
+    <ClCompile Include="Torch\ClassFormatDataSet.cpp">
+      <Filter>Torch</Filter>
+    </ClCompile>
+    <ClCompile Include="Torch\ClassMeasurer.cpp">
+      <Filter>Torch</Filter>
+    </ClCompile>
+    <ClCompile Include="Torch\ClassNLLCriterion.cpp">
+      <Filter>Torch</Filter>
+    </ClCompile>
+    <ClCompile Include="Torch\ClassNLLMeasurer.cpp">
+      <Filter>Torch</Filter>
+    </ClCompile>
+    <ClCompile Include="Torch\CmdLine.cpp">
+      <Filter>Torch</Filter>
+    </ClCompile>
+    <ClCompile Include="Torch\CmdOption.cpp">
+      <Filter>Torch</Filter>
+    </ClCompile>
+    <ClCompile Include="Torch\ConnectedMachine.cpp">
+      <Filter>Torch</Filter>
+    </ClCompile>
+    <ClCompile Include="Torch\Criterion.cpp">
+      <Filter>Torch</Filter>
+    </ClCompile>
+    <ClCompile Include="Torch\DataSet.cpp">
+      <Filter>Torch</Filter>
+    </ClCompile>
+    <ClCompile Include="Torch\DecoderBatchTest.cpp">
+      <Filter>Torch</Filter>
+    </ClCompile>
+    <ClCompile Include="Torch\DecoderSingleTest.cpp">
+      <Filter>Torch</Filter>
+    </ClCompile>
+    <ClCompile Include="Torch\DecodingHMM.cpp">
+      <Filter>Torch</Filter>
+    </ClCompile>
+    <ClCompile Include="Torch\DecodingHypothesis.cpp">
+      <Filter>Torch</Filter>
+    </ClCompile>
+    <ClCompile Include="Torch\DiagonalGMM.cpp">
+      <Filter>Torch</Filter>
+    </ClCompile>
+    <ClCompile Include="Torch\DiskDataSet.cpp">
+      <Filter>Torch</Filter>
+    </ClCompile>
+    <ClCompile Include="Torch\DiskHTKDataSet.cpp">
+      <Filter>Torch</Filter>
+    </ClCompile>
+    <ClCompile Include="Torch\DiskMatDataSet.cpp">
+      <Filter>Torch</Filter>
+    </ClCompile>
+    <ClCompile Include="Torch\DiskXFile.cpp">
+      <Filter>Torch</Filter>
+    </ClCompile>
+    <ClCompile Include="Torch\Distribution.cpp">
+      <Filter>Torch</Filter>
+    </ClCompile>
+    <ClCompile Include="Torch\EditDistance.cpp">
+      <Filter>Torch</Filter>
+    </ClCompile>
+    <ClCompile Include="Torch\EditDistanceMeasurer.cpp">
+      <Filter>Torch</Filter>
+    </ClCompile>
+    <ClCompile Include="Torch\EMTrainer.cpp">
+      <Filter>Torch</Filter>
+    </ClCompile>
+    <ClCompile Include="Torch\ExampleFrameSelectorDataSet.cpp">
+      <Filter>Torch</Filter>
+    </ClCompile>
+    <ClCompile Include="Torch\Exp.cpp">
+      <Filter>Torch</Filter>
+    </ClCompile>
+    <ClCompile Include="Torch\FileListCmdOption.cpp">
+      <Filter>Torch</Filter>
+    </ClCompile>
+    <ClCompile Include="Torch\FrameSeg.cpp">
+      <Filter>Torch</Filter>
+    </ClCompile>
+    <ClCompile Include="Torch\FrameSegMeasurer.cpp">
+      <Filter>Torch</Filter>
+    </ClCompile>
+    <ClCompile Include="Torch\FrameSelectorDataSet.cpp">
+      <Filter>Torch</Filter>
+    </ClCompile>
+    <ClCompile Include="Torch\general.cpp">
+      <Filter>Torch</Filter>
+    </ClCompile>
+    <ClCompile Include="Torch\GradientMachine.cpp">
+      <Filter>Torch</Filter>
+    </ClCompile>
+    <ClCompile Include="Torch\Grammar.cpp">
+      <Filter>Torch</Filter>
+    </ClCompile>
+    <ClCompile Include="Torch\HMM.cpp">
+      <Filter>Torch</Filter>
+    </ClCompile>
+    <ClCompile Include="Torch\HTKDataSet.cpp">
+      <Filter>Torch</Filter>
+    </ClCompile>
+    <ClCompile Include="Torch\InputsSelect.cpp">
+      <Filter>Torch</Filter>
+    </ClCompile>
+    <ClCompile Include="Torch\IOAscii.cpp">
+      <Filter>Torch</Filter>
+    </ClCompile>
+    <ClCompile Include="Torch\IOBin.cpp">
+      <Filter>Torch</Filter>
+    </ClCompile>
+    <ClCompile Include="Torch\IOBufferize.cpp">
+      <Filter>Torch</Filter>
+    </ClCompile>
+    <ClCompile Include="Torch\IOHTK.cpp">
+      <Filter>Torch</Filter>
+    </ClCompile>
+    <ClCompile Include="Torch\IOHTKTarget.cpp">
+      <Filter>Torch</Filter>
+    </ClCompile>
+    <ClCompile Include="Torch\IOMulti.cpp">
+      <Filter>Torch</Filter>
+    </ClCompile>
+    <ClCompile Include="Torch\IOSequence.cpp">
+      <Filter>Torch</Filter>
+    </ClCompile>
+    <ClCompile Include="Torch\IOSequenceArray.cpp">
+      <Filter>Torch</Filter>
+    </ClCompile>
+    <ClCompile Include="Torch\IOSub.cpp">
+      <Filter>Torch</Filter>
+    </ClCompile>
+    <ClCompile Include="Torch\Kernel.cpp">
+      <Filter>Torch</Filter>
+    </ClCompile>
+    <ClCompile Include="Torch\KFold.cpp">
+      <Filter>Torch</Filter>
+    </ClCompile>
+    <ClCompile Include="Torch\KMeans.cpp">
+      <Filter>Torch</Filter>
+    </ClCompile>
+    <ClCompile Include="Torch\KNN.cpp">
+      <Filter>Torch</Filter>
+    </ClCompile>
+    <ClCompile Include="Torch\LanguageModel.cpp">
+      <Filter>Torch</Filter>
+    </ClCompile>
+    <ClCompile Include="Torch\LexiconInfo.cpp">
+      <Filter>Torch</Filter>
+    </ClCompile>
+    <ClCompile Include="Torch\Linear.cpp">
+      <Filter>Torch</Filter>
+    </ClCompile>
+    <ClCompile Include="Torch\LinearLexicon.cpp">
+      <Filter>Torch</Filter>
+    </ClCompile>
+    <ClCompile Include="Torch\LMCache.cpp">
+      <Filter>Torch</Filter>
+    </ClCompile>
+    <ClCompile Include="Torch\LMCacheEntry.cpp">
+      <Filter>Torch</Filter>
+    </ClCompile>
+    <ClCompile Include="Torch\LMInteriorLevelWordEntry.cpp">
+      <Filter>Torch</Filter>
+    </ClCompile>
+    <ClCompile Include="Torch\LMInteriorLevelWordList.cpp">
+      <Filter>Torch</Filter>
+    </ClCompile>
+    <ClCompile Include="Torch\LMNGram.cpp">
+      <Filter>Torch</Filter>
+    </ClCompile>
+    <ClCompile Include="Torch\log_add.cpp">
+      <Filter>Torch</Filter>
+    </ClCompile>
+    <ClCompile Include="Torch\LogMixer.cpp">
+      <Filter>Torch</Filter>
+    </ClCompile>
+    <ClCompile Include="Torch\LogRBF.cpp">
+      <Filter>Torch</Filter>
+    </ClCompile>
+    <ClCompile Include="Torch\LogSigmoid.cpp">
+      <Filter>Torch</Filter>
+    </ClCompile>
+    <ClCompile Include="Torch\LogSoftMax.cpp">
+      <Filter>Torch</Filter>
+    </ClCompile>
+    <ClCompile Include="Torch\Machine.cpp">
+      <Filter>Torch</Filter>
+    </ClCompile>
+    <ClCompile Include="Torch\MAPDiagonalGMM.cpp">
+      <Filter>Torch</Filter>
+    </ClCompile>
+    <ClCompile Include="Torch\MAPHMM.cpp">
+      <Filter>Torch</Filter>
+    </ClCompile>
+    <ClCompile Include="Torch\Mat.cpp">
+      <Filter>Torch</Filter>
+    </ClCompile>
+    <ClCompile Include="Torch\Mat_operations.cpp">
+      <Filter>Torch</Filter>
+    </ClCompile>
+    <ClCompile Include="Torch\MatDataSet.cpp">
+      <Filter>Torch</Filter>
+    </ClCompile>
+    <ClCompile Include="Torch\MeanVarNorm.cpp">
+      <Filter>Torch</Filter>
+    </ClCompile>
+    <ClCompile Include="Torch\Measurer.cpp">
+      <Filter>Torch</Filter>
+    </ClCompile>
+    <ClCompile Include="Torch\MemoryDataSet.cpp">
+      <Filter>Torch</Filter>
+    </ClCompile>
+    <ClCompile Include="Torch\MemoryXFile.cpp">
+      <Filter>Torch</Filter>
+    </ClCompile>
+    <ClCompile Include="Torch\Mixer.cpp">
+      <Filter>Torch</Filter>
+    </ClCompile>
+    <ClCompile Include="Torch\MLP.cpp">
+      <Filter>Torch</Filter>
+    </ClCompile>
+    <ClCompile Include="Torch\MSECriterion.cpp">
+      <Filter>Torch</Filter>
+    </ClCompile>
+    <ClCompile Include="Torch\MSEMeasurer.cpp">
+      <Filter>Torch</Filter>
+    </ClCompile>
+    <ClCompile Include="Torch\MultiClassFormat.cpp">
+      <Filter>Torch</Filter>
+    </ClCompile>
+    <ClCompile Include="Torch\MultiCriterion.cpp">
+      <Filter>Torch</Filter>
+    </ClCompile>
+    <ClCompile Include="Torch\Multinomial.cpp">
+      <Filter>Torch</Filter>
+    </ClCompile>
+    <ClCompile Include="Torch\mx_givens.cpp">
+      <Filter>Torch</Filter>
+    </ClCompile>
+    <ClCompile Include="Torch\mx_hessenberg.cpp">
+      <Filter>Torch</Filter>
+    </ClCompile>
+    <ClCompile Include="Torch\mx_householder.cpp">
+      <Filter>Torch</Filter>
+    </ClCompile>
+    <ClCompile Include="Torch\mx_low_level.cpp">
+      <Filter>Torch</Filter>
+    </ClCompile>
+    <ClCompile Include="Torch\mx_lu_factor.cpp">
+      <Filter>Torch</Filter>
+    </ClCompile>
+    <ClCompile Include="Torch\mx_solve.cpp">
+      <Filter>Torch</Filter>
+    </ClCompile>
+    <ClCompile Include="Torch\mx_sym_eig.cpp">
+      <Filter>Torch</Filter>
+    </ClCompile>
+    <ClCompile Include="Torch\NLLCriterion.cpp">
+      <Filter>Torch</Filter>
+    </ClCompile>
+    <ClCompile Include="Torch\NLLMeasurer.cpp">
+      <Filter>Torch</Filter>
+    </ClCompile>
+    <ClCompile Include="Torch\NPTrainer.cpp">
+      <Filter>Torch</Filter>
+    </ClCompile>
+    <ClCompile Include="Torch\NullXFile.cpp">
+      <Filter>Torch</Filter>
+    </ClCompile>
+    <ClCompile Include="Torch\Object.cpp">
+      <Filter>Torch</Filter>
+    </ClCompile>
+    <ClCompile Include="Torch\OneHotClassFormat.cpp">
+      <Filter>Torch</Filter>
+    </ClCompile>
+    <ClCompile Include="Torch\OutputMeasurer.cpp">
+      <Filter>Torch</Filter>
+    </ClCompile>
+    <ClCompile Include="Torch\Parameters.cpp">
+      <Filter>Torch</Filter>
+    </ClCompile>
+    <ClCompile Include="Torch\ParzenDistribution.cpp">
+      <Filter>Torch</Filter>
+    </ClCompile>
+    <ClCompile Include="Torch\ParzenMachine.cpp">
+      <Filter>Torch</Filter>
+    </ClCompile>
+    <ClCompile Include="Torch\Perm.cpp">
+      <Filter>Torch</Filter>
+    </ClCompile>
+    <ClCompile Include="Torch\Perm_operations.cpp">
+      <Filter>Torch</Filter>
+    </ClCompile>
+    <ClCompile Include="Torch\PhoneInfo.cpp">
+      <Filter>Torch</Filter>
+    </ClCompile>
+    <ClCompile Include="Torch\PhoneModels.cpp">
+      <Filter>Torch</Filter>
+    </ClCompile>
+    <ClCompile Include="Torch\PipeXFile.cpp">
+      <Filter>Torch</Filter>
+    </ClCompile>
+    <ClCompile Include="Torch\PreProcessing.cpp">
+      <Filter>Torch</Filter>
+    </ClCompile>
+    <ClCompile Include="Torch\QCCache.cpp">
+      <Filter>Torch</Filter>
+    </ClCompile>
+    <ClCompile Include="Torch\QCMachine.cpp">
+      <Filter>Torch</Filter>
+    </ClCompile>
+    <ClCompile Include="Torch\QCTrainer.cpp">
+      <Filter>Torch</Filter>
+    </ClCompile>
+    <ClCompile Include="Torch\Random.cpp">
+      <Filter>Torch</Filter>
+    </ClCompile>
+    <ClCompile Include="Torch\SaturationMeasurer.cpp">
+      <Filter>Torch</Filter>
+    </ClCompile>
+    <ClCompile Include="Torch\Sequence.cpp">
+      <Filter>Torch</Filter>
+    </ClCompile>
+    <ClCompile Include="Torch\Sigmoid.cpp">
+      <Filter>Torch</Filter>
+    </ClCompile>
+    <ClCompile Include="Torch\SimpleDecoderSpeechHMM.cpp">
+      <Filter>Torch</Filter>
+    </ClCompile>
+    <ClCompile Include="Torch\SoftMax.cpp">
+      <Filter>Torch</Filter>
+    </ClCompile>
+    <ClCompile Include="Torch\SoftPlus.cpp">
+      <Filter>Torch</Filter>
+    </ClCompile>
+    <ClCompile Include="Torch\SpatialConvolution.cpp">
+      <Filter>Torch</Filter>
+    </ClCompile>
+    <ClCompile Include="Torch\SpatialSubSampling.cpp">
+      <Filter>Torch</Filter>
+    </ClCompile>
+    <ClCompile Include="Torch\SpeechHMM.cpp">
+      <Filter>Torch</Filter>
+    </ClCompile>
+    <ClCompile Include="Torch\SpeechMLP.cpp">
+      <Filter>Torch</Filter>
+    </ClCompile>
+    <ClCompile Include="Torch\SpeechMLPDistr.cpp">
+      <Filter>Torch</Filter>
+    </ClCompile>
+    <ClCompile Include="Torch\Stack.cpp">
+      <Filter>Torch</Filter>
+    </ClCompile>
+    <ClCompile Include="Torch\StochasticGradient.cpp">
+      <Filter>Torch</Filter>
+    </ClCompile>
+    <ClCompile Include="Torch\string_stuff.cpp">
+      <Filter>Torch</Filter>
+    </ClCompile>
+    <ClCompile Include="Torch\string_utils.cpp">
+      <Filter>Torch</Filter>
+    </ClCompile>
+    <ClCompile Include="Torch\SumMachine.cpp">
+      <Filter>Torch</Filter>
+    </ClCompile>
+    <ClCompile Include="Torch\SVM.cpp">
+      <Filter>Torch</Filter>
+    </ClCompile>
+    <ClCompile Include="Torch\SVMCache.cpp">
+      <Filter>Torch</Filter>
+    </ClCompile>
+    <ClCompile Include="Torch\SVMClassification.cpp">
+      <Filter>Torch</Filter>
+    </ClCompile>
+    <ClCompile Include="Torch\SVMRegression.cpp">
+      <Filter>Torch</Filter>
+    </ClCompile>
+    <ClCompile Include="Torch\TableLookupDistribution.cpp">
+      <Filter>Torch</Filter>
+    </ClCompile>
+    <ClCompile Include="Torch\Tanh.cpp">
+      <Filter>Torch</Filter>
+    </ClCompile>
+    <ClCompile Include="Torch\TemporalConvolution.cpp">
+      <Filter>Torch</Filter>
+    </ClCompile>
+    <ClCompile Include="Torch\TemporalMean.cpp">
+      <Filter>Torch</Filter>
+    </ClCompile>
+    <ClCompile Include="Torch\TemporalSubSampling.cpp">
+      <Filter>Torch</Filter>
+    </ClCompile>
+    <ClCompile Include="Torch\TimeMeasurer.cpp">
+      <Filter>Torch</Filter>
+    </ClCompile>
+    <ClCompile Include="Torch\Timer.cpp">
+      <Filter>Torch</Filter>
+    </ClCompile>
+    <ClCompile Include="Torch\Trainer.cpp">
+      <Filter>Torch</Filter>
+    </ClCompile>
+    <ClCompile Include="Torch\TwoClassFormat.cpp">
+      <Filter>Torch</Filter>
+    </ClCompile>
+    <ClCompile Include="Torch\Vec.cpp">
+      <Filter>Torch</Filter>
+    </ClCompile>
+    <ClCompile Include="Torch\Vocabulary.cpp">
+      <Filter>Torch</Filter>
+    </ClCompile>
+    <ClCompile Include="Torch\WeightedMSECriterion.cpp">
+      <Filter>Torch</Filter>
+    </ClCompile>
+    <ClCompile Include="Torch\WeightedSumMachine.cpp">
+      <Filter>Torch</Filter>
+    </ClCompile>
+    <ClCompile Include="Torch\WordChainElemPool.cpp">
+      <Filter>Torch</Filter>
+    </ClCompile>
+    <ClCompile Include="Torch\WordSeg.cpp">
+      <Filter>Torch</Filter>
+    </ClCompile>
+    <ClCompile Include="Torch\WordSegMeasurer.cpp">
+      <Filter>Torch</Filter>
+    </ClCompile>
+    <ClCompile Include="Torch\XFile.cpp">
+      <Filter>Torch</Filter>
+    </ClCompile>
+    <ClCompile Include="SPSegment.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Torch\Allocator.h">
+      <Filter>Torch</Filter>
+    </ClInclude>
+    <ClInclude Include="Torch\Bagging.h">
+      <Filter>Torch</Filter>
+    </ClInclude>
+    <ClInclude Include="Torch\BayesClassifier.h">
+      <Filter>Torch</Filter>
+    </ClInclude>
+    <ClInclude Include="Torch\BayesClassifierMachine.h">
+      <Filter>Torch</Filter>
+    </ClInclude>
+    <ClInclude Include="Torch\BeamSearchDecoder.h">
+      <Filter>Torch</Filter>
+    </ClInclude>
+    <ClInclude Include="Torch\Boosting.h">
+      <Filter>Torch</Filter>
+    </ClInclude>
+    <ClInclude Include="Torch\BoostingMeasurer.h">
+      <Filter>Torch</Filter>
+    </ClInclude>
+    <ClInclude Include="Torch\ClassFormat.h">
+      <Filter>Torch</Filter>
+    </ClInclude>
+    <ClInclude Include="Torch\ClassFormatDataSet.h">
+      <Filter>Torch</Filter>
+    </ClInclude>
+    <ClInclude Include="Torch\ClassMeasurer.h">
+      <Filter>Torch</Filter>
+    </ClInclude>
+    <ClInclude Include="Torch\ClassNLLCriterion.h">
+      <Filter>Torch</Filter>
+    </ClInclude>
+    <ClInclude Include="Torch\ClassNLLMeasurer.h">
+      <Filter>Torch</Filter>
+    </ClInclude>
+    <ClInclude Include="Torch\CmdLine.h">
+      <Filter>Torch</Filter>
+    </ClInclude>
+    <ClInclude Include="Torch\CmdOption.h">
+      <Filter>Torch</Filter>
+    </ClInclude>
+    <ClInclude Include="Torch\ConnectedMachine.h">
+      <Filter>Torch</Filter>
+    </ClInclude>
+    <ClInclude Include="Torch\Criterion.h">
+      <Filter>Torch</Filter>
+    </ClInclude>
+    <ClInclude Include="Torch\DataSet.h">
+      <Filter>Torch</Filter>
+    </ClInclude>
+    <ClInclude Include="Torch\DecoderBatchTest.h">
+      <Filter>Torch</Filter>
+    </ClInclude>
+    <ClInclude Include="Torch\DecoderSingleTest.h">
+      <Filter>Torch</Filter>
+    </ClInclude>
+    <ClInclude Include="Torch\DecodingHMM.h">
+      <Filter>Torch</Filter>
+    </ClInclude>
+    <ClInclude Include="Torch\DecodingHypothesis.h">
+      <Filter>Torch</Filter>
+    </ClInclude>
+    <ClInclude Include="Torch\DiagonalGMM.h">
+      <Filter>Torch</Filter>
+    </ClInclude>
+    <ClInclude Include="Torch\DiskDataSet.h">
+      <Filter>Torch</Filter>
+    </ClInclude>
+    <ClInclude Include="Torch\DiskHTKDataSet.h">
+      <Filter>Torch</Filter>
+    </ClInclude>
+    <ClInclude Include="Torch\DiskMatDataSet.h">
+      <Filter>Torch</Filter>
+    </ClInclude>
+    <ClInclude Include="Torch\DiskXFile.h">
+      <Filter>Torch</Filter>
+    </ClInclude>
+    <ClInclude Include="Torch\Distribution.h">
+      <Filter>Torch</Filter>
+    </ClInclude>
+    <ClInclude Include="Torch\EditDistance.h">
+      <Filter>Torch</Filter>
+    </ClInclude>
+    <ClInclude Include="Torch\EditDistanceMeasurer.h">
+      <Filter>Torch</Filter>
+    </ClInclude>
+    <ClInclude Include="Torch\EMTrainer.h">
+      <Filter>Torch</Filter>
+    </ClInclude>
+    <ClInclude Include="Torch\ExampleFrameSelectorDataSet.h">
+      <Filter>Torch</Filter>
+    </ClInclude>
+    <ClInclude Include="Torch\Exp.h">
+      <Filter>Torch</Filter>
+    </ClInclude>
+    <ClInclude Include="Torch\FileListCmdOption.h">
+      <Filter>Torch</Filter>
+    </ClInclude>
+    <ClInclude Include="Torch\FrameSeg.h">
+      <Filter>Torch</Filter>
+    </ClInclude>
+    <ClInclude Include="Torch\FrameSegMeasurer.h">
+      <Filter>Torch</Filter>
+    </ClInclude>
+    <ClInclude Include="Torch\FrameSelectorDataSet.h">
+      <Filter>Torch</Filter>
+    </ClInclude>
+    <ClInclude Include="Torch\general.h">
+      <Filter>Torch</Filter>
+    </ClInclude>
+    <ClInclude Include="Torch\GradientMachine.h">
+      <Filter>Torch</Filter>
+    </ClInclude>
+    <ClInclude Include="Torch\Grammar.h">
+      <Filter>Torch</Filter>
+    </ClInclude>
+    <ClInclude Include="Torch\HMM.h">
+      <Filter>Torch</Filter>
+    </ClInclude>
+    <ClInclude Include="Torch\HTKDataSet.h">
+      <Filter>Torch</Filter>
+    </ClInclude>
+    <ClInclude Include="Torch\InputsSelect.h">
+      <Filter>Torch</Filter>
+    </ClInclude>
+    <ClInclude Include="Torch\IOAscii.h">
+      <Filter>Torch</Filter>
+    </ClInclude>
+    <ClInclude Include="Torch\IOBin.h">
+      <Filter>Torch</Filter>
+    </ClInclude>
+    <ClInclude Include="Torch\IOBufferize.h">
+      <Filter>Torch</Filter>
+    </ClInclude>
+    <ClInclude Include="Torch\IOHTK.h">
+      <Filter>Torch</Filter>
+    </ClInclude>
+    <ClInclude Include="Torch\IOHTKTarget.h">
+      <Filter>Torch</Filter>
+    </ClInclude>
+    <ClInclude Include="Torch\IOMulti.h">
+      <Filter>Torch</Filter>
+    </ClInclude>
+    <ClInclude Include="Torch\IOSequence.h">
+      <Filter>Torch</Filter>
+    </ClInclude>
+    <ClInclude Include="Torch\IOSequenceArray.h">
+      <Filter>Torch</Filter>
+    </ClInclude>
+    <ClInclude Include="Torch\IOSub.h">
+      <Filter>Torch</Filter>
+    </ClInclude>
+    <ClInclude Include="Torch\Kernel.h">
+      <Filter>Torch</Filter>
+    </ClInclude>
+    <ClInclude Include="Torch\KFold.h">
+      <Filter>Torch</Filter>
+    </ClInclude>
+    <ClInclude Include="Torch\KMeans.h">
+      <Filter>Torch</Filter>
+    </ClInclude>
+    <ClInclude Include="Torch\KNN.h">
+      <Filter>Torch</Filter>
+    </ClInclude>
+    <ClInclude Include="Torch\LanguageModel.h">
+      <Filter>Torch</Filter>
+    </ClInclude>
+    <ClInclude Include="Torch\LexiconInfo.h">
+      <Filter>Torch</Filter>
+    </ClInclude>
+    <ClInclude Include="Torch\Linear.h">
+      <Filter>Torch</Filter>
+    </ClInclude>
+    <ClInclude Include="Torch\LinearLexicon.h">
+      <Filter>Torch</Filter>
+    </ClInclude>
+    <ClInclude Include="Torch\List.h">
+      <Filter>Torch</Filter>
+    </ClInclude>
+    <ClInclude Include="Torch\LMCache.h">
+      <Filter>Torch</Filter>
+    </ClInclude>
+    <ClInclude Include="Torch\LMCacheEntry.h">
+      <Filter>Torch</Filter>
+    </ClInclude>
+    <ClInclude Include="Torch\LMInteriorLevelWordEntry.h">
+      <Filter>Torch</Filter>
+    </ClInclude>
+    <ClInclude Include="Torch\LMInteriorLevelWordList.h">
+      <Filter>Torch</Filter>
+    </ClInclude>
+    <ClInclude Include="Torch\LMNGram.h">
+      <Filter>Torch</Filter>
+    </ClInclude>
+    <ClInclude Include="Torch\log_add.h">
+      <Filter>Torch</Filter>
+    </ClInclude>
+    <ClInclude Include="Torch\LogMixer.h">
+      <Filter>Torch</Filter>
+    </ClInclude>
+    <ClInclude Include="Torch\LogRBF.h">
+      <Filter>Torch</Filter>
+    </ClInclude>
+    <ClInclude Include="Torch\LogSigmoid.h">
+      <Filter>Torch</Filter>
+    </ClInclude>
+    <ClInclude Include="Torch\LogSoftMax.h">
+      <Filter>Torch</Filter>
+    </ClInclude>
+    <ClInclude Include="Torch\Machine.h">
+      <Filter>Torch</Filter>
+    </ClInclude>
+    <ClInclude Include="Torch\MAPDiagonalGMM.h">
+      <Filter>Torch</Filter>
+    </ClInclude>
+    <ClInclude Include="Torch\MAPHMM.h">
+      <Filter>Torch</Filter>
+    </ClInclude>
+    <ClInclude Include="Torch\Mat.h">
+      <Filter>Torch</Filter>
+    </ClInclude>
+    <ClInclude Include="Torch\Mat_operations.h">
+      <Filter>Torch</Filter>
+    </ClInclude>
+    <ClInclude Include="Torch\MatDataSet.h">
+      <Filter>Torch</Filter>
+    </ClInclude>
+    <ClInclude Include="Torch\matrix.h">
+      <Filter>Torch</Filter>
+    </ClInclude>
+    <ClInclude Include="Torch\MeanVarNorm.h">
+      <Filter>Torch</Filter>
+    </ClInclude>
+    <ClInclude Include="Torch\Measurer.h">
+      <Filter>Torch</Filter>
+    </ClInclude>
+    <ClInclude Include="Torch\MemoryDataSet.h">
+      <Filter>Torch</Filter>
+    </ClInclude>
+    <ClInclude Include="Torch\MemoryXFile.h">
+      <Filter>Torch</Filter>
+    </ClInclude>
+    <ClInclude Include="Torch\Mixer.h">
+      <Filter>Torch</Filter>
+    </ClInclude>
+    <ClInclude Include="Torch\MLP.h">
+      <Filter>Torch</Filter>
+    </ClInclude>
+    <ClInclude Include="Torch\MSECriterion.h">
+      <Filter>Torch</Filter>
+    </ClInclude>
+    <ClInclude Include="Torch\MSEMeasurer.h">
+      <Filter>Torch</Filter>
+    </ClInclude>
+    <ClInclude Include="Torch\MultiClassFormat.h">
+      <Filter>Torch</Filter>
+    </ClInclude>
+    <ClInclude Include="Torch\MultiCriterion.h">
+      <Filter>Torch</Filter>
+    </ClInclude>
+    <ClInclude Include="Torch\Multinomial.h">
+      <Filter>Torch</Filter>
+    </ClInclude>
+    <ClInclude Include="Torch\mx_givens.h">
+      <Filter>Torch</Filter>
+    </ClInclude>
+    <ClInclude Include="Torch\mx_hessenberg.h">
+      <Filter>Torch</Filter>
+    </ClInclude>
+    <ClInclude Include="Torch\mx_householder.h">
+      <Filter>Torch</Filter>
+    </ClInclude>
+    <ClInclude Include="Torch\mx_low_level.h">
+      <Filter>Torch</Filter>
+    </ClInclude>
+    <ClInclude Include="Torch\mx_lu_factor.h">
+      <Filter>Torch</Filter>
+    </ClInclude>
+    <ClInclude Include="Torch\mx_solve.h">
+      <Filter>Torch</Filter>
+    </ClInclude>
+    <ClInclude Include="Torch\mx_sym_eig.h">
+      <Filter>Torch</Filter>
+    </ClInclude>
+    <ClInclude Include="Torch\NLLCriterion.h">
+      <Filter>Torch</Filter>
+    </ClInclude>
+    <ClInclude Include="Torch\NLLMeasurer.h">
+      <Filter>Torch</Filter>
+    </ClInclude>
+    <ClInclude Include="Torch\NPTrainer.h">
+      <Filter>Torch</Filter>
+    </ClInclude>
+    <ClInclude Include="Torch\NullXFile.h">
+      <Filter>Torch</Filter>
+    </ClInclude>
+    <ClInclude Include="Torch\Object.h">
+      <Filter>Torch</Filter>
+    </ClInclude>
+    <ClInclude Include="Torch\OneHotClassFormat.h">
+      <Filter>Torch</Filter>
+    </ClInclude>
+    <ClInclude Include="Torch\OutputMeasurer.h">
+      <Filter>Torch</Filter>
+    </ClInclude>
+    <ClInclude Include="Torch\Parameters.h">
+      <Filter>Torch</Filter>
+    </ClInclude>
+    <ClInclude Include="Torch\ParzenDistribution.h">
+      <Filter>Torch</Filter>
+    </ClInclude>
+    <ClInclude Include="Torch\ParzenMachine.h">
+      <Filter>Torch</Filter>
+    </ClInclude>
+    <ClInclude Include="Torch\Perm.h">
+      <Filter>Torch</Filter>
+    </ClInclude>
+    <ClInclude Include="Torch\Perm_operations.h">
+      <Filter>Torch</Filter>
+    </ClInclude>
+    <ClInclude Include="Torch\PhoneInfo.h">
+      <Filter>Torch</Filter>
+    </ClInclude>
+    <ClInclude Include="Torch\PhoneModels.h">
+      <Filter>Torch</Filter>
+    </ClInclude>
+    <ClInclude Include="Torch\PipeXFile.h">
+      <Filter>Torch</Filter>
+    </ClInclude>
+    <ClInclude Include="Torch\PreProcessing.h">
+      <Filter>Torch</Filter>
+    </ClInclude>
+    <ClInclude Include="Torch\QCCache.h">
+      <Filter>Torch</Filter>
+    </ClInclude>
+    <ClInclude Include="Torch\QCMachine.h">
+      <Filter>Torch</Filter>
+    </ClInclude>
+    <ClInclude Include="Torch\QCTrainer.h">
+      <Filter>Torch</Filter>
+    </ClInclude>
+    <ClInclude Include="Torch\Random.h">
+      <Filter>Torch</Filter>
+    </ClInclude>
+    <ClInclude Include="Torch\SaturationMeasurer.h">
+      <Filter>Torch</Filter>
+    </ClInclude>
+    <ClInclude Include="Torch\Sequence.h">
+      <Filter>Torch</Filter>
+    </ClInclude>
+    <ClInclude Include="Torch\Sigmoid.h">
+      <Filter>Torch</Filter>
+    </ClInclude>
+    <ClInclude Include="Torch\SimpleDecoderSpeechHMM.h">
+      <Filter>Torch</Filter>
+    </ClInclude>
+    <ClInclude Include="Torch\SoftMax.h">
+      <Filter>Torch</Filter>
+    </ClInclude>
+    <ClInclude Include="Torch\SoftPlus.h">
+      <Filter>Torch</Filter>
+    </ClInclude>
+    <ClInclude Include="Torch\SpatialConvolution.h">
+      <Filter>Torch</Filter>
+    </ClInclude>
+    <ClInclude Include="Torch\SpatialSubSampling.h">
+      <Filter>Torch</Filter>
+    </ClInclude>
+    <ClInclude Include="Torch\SpeechHMM.h">
+      <Filter>Torch</Filter>
+    </ClInclude>
+    <ClInclude Include="Torch\SpeechMLP.h">
+      <Filter>Torch</Filter>
+    </ClInclude>
+    <ClInclude Include="Torch\SpeechMLPDistr.h">
+      <Filter>Torch</Filter>
+    </ClInclude>
+    <ClInclude Include="Torch\Stack.h">
+      <Filter>Torch</Filter>
+    </ClInclude>
+    <ClInclude Include="Torch\StochasticGradient.h">
+      <Filter>Torch</Filter>
+    </ClInclude>
+    <ClInclude Include="Torch\string_stuff.h">
+      <Filter>Torch</Filter>
+    </ClInclude>
+    <ClInclude Include="Torch\string_utils.h">
+      <Filter>Torch</Filter>
+    </ClInclude>
+    <ClInclude Include="Torch\SumMachine.h">
+      <Filter>Torch</Filter>
+    </ClInclude>
+    <ClInclude Include="Torch\SVM.h">
+      <Filter>Torch</Filter>
+    </ClInclude>
+    <ClInclude Include="Torch\SVMCache.h">
+      <Filter>Torch</Filter>
+    </ClInclude>
+    <ClInclude Include="Torch\SVMClassification.h">
+      <Filter>Torch</Filter>
+    </ClInclude>
+    <ClInclude Include="Torch\SVMRegression.h">
+      <Filter>Torch</Filter>
+    </ClInclude>
+    <ClInclude Include="Torch\TableLookupDistribution.h">
+      <Filter>Torch</Filter>
+    </ClInclude>
+    <ClInclude Include="Torch\Tanh.h">
+      <Filter>Torch</Filter>
+    </ClInclude>
+    <ClInclude Include="Torch\TemporalConvolution.h">
+      <Filter>Torch</Filter>
+    </ClInclude>
+    <ClInclude Include="Torch\TemporalMean.h">
+      <Filter>Torch</Filter>
+    </ClInclude>
+    <ClInclude Include="Torch\TemporalSubSampling.h">
+      <Filter>Torch</Filter>
+    </ClInclude>
+    <ClInclude Include="Torch\TimeMeasurer.h">
+      <Filter>Torch</Filter>
+    </ClInclude>
+    <ClInclude Include="Torch\Timer.h">
+      <Filter>Torch</Filter>
+    </ClInclude>
+    <ClInclude Include="Torch\Trainer.h">
+      <Filter>Torch</Filter>
+    </ClInclude>
+    <ClInclude Include="Torch\TwoClassFormat.h">
+      <Filter>Torch</Filter>
+    </ClInclude>
+    <ClInclude Include="Torch\Vec.h">
+      <Filter>Torch</Filter>
+    </ClInclude>
+    <ClInclude Include="Torch\Vocabulary.h">
+      <Filter>Torch</Filter>
+    </ClInclude>
+    <ClInclude Include="Torch\WeightedMSECriterion.h">
+      <Filter>Torch</Filter>
+    </ClInclude>
+    <ClInclude Include="Torch\WeightedSumMachine.h">
+      <Filter>Torch</Filter>
+    </ClInclude>
+    <ClInclude Include="Torch\WordChainElemPool.h">
+      <Filter>Torch</Filter>
+    </ClInclude>
+    <ClInclude Include="Torch\WordSeg.h">
+      <Filter>Torch</Filter>
+    </ClInclude>
+    <ClInclude Include="Torch\WordSegMeasurer.h">
+      <Filter>Torch</Filter>
+    </ClInclude>
+    <ClInclude Include="Torch\XFile.h">
+      <Filter>Torch</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Torch\LICENSE">
+      <Filter>Torch</Filter>
+    </None>
+    <None Include="Torch\README">
+      <Filter>Torch</Filter>
+    </None>
+  </ItemGroup>
+</Project>
