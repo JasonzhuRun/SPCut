@@ -5,8 +5,23 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SPCut"
         mc:Ignorable="d"
-        Title="SPCut" Height="350" Width="525">
+        Title="SPCut" Height="600" Width="800" MinHeight="600" MinWidth="800" Background="Gray">
     <Grid>
-        
+        <Button x:Name="btn_open" Content="打开" HorizontalAlignment="Left" Margin="30,30,0,0" VerticalAlignment="Top" Width="75" Height="30" Click="onOpenBtnClick"/>
+        <Button x:Name="btn_segment" Content="分割" HorizontalAlignment="Left" Margin="150,30,0,0" VerticalAlignment="Top" Width="75" Height="30" Click="onSegmentBtnClick"/>
+        <Label Content="L:" HorizontalAlignment="Left" Margin="240,30,0,0" VerticalAlignment="Top" Height="30"/>
+        <TextBox x:Name="tb_L" HorizontalAlignment="Left" Margin="270,30,0,0" VerticalAlignment="Top" Width="50" Height="30" FontSize="16"/>
+        <Label Content="T:" HorizontalAlignment="Left" Margin="330,30,0,0" VerticalAlignment="Top" Height="30"/>
+        <TextBox x:Name="tb_T" HorizontalAlignment="Left" Margin="360,30,0,0" VerticalAlignment="Top" Width="50" Height="30" FontSize="16"/>
+        <Label Content="R:" HorizontalAlignment="Left" Margin="420,30,0,0" VerticalAlignment="Top" Height="30"/>
+        <TextBox x:Name="tb_R" HorizontalAlignment="Left" Margin="450,30,0,0" VerticalAlignment="Top" Width="50" Height="30" FontSize="16"/>
+        <Label Content="B:" HorizontalAlignment="Left" Margin="510,30,0,0" VerticalAlignment="Top" Height="30"/>
+        <TextBox x:Name="tb_B" HorizontalAlignment="Left" Margin="540,30,0,0" VerticalAlignment="Top" Width="50" Height="30" FontSize="16"/>
+        <Button x:Name="btn_rectangle" Content="画框" HorizontalAlignment="Left" Margin="650,30,0,0" VerticalAlignment="Top" Width="75" Height="30" Click="onDrawBtnClick"/>
+        <Canvas HorizontalAlignment="Stretch" Margin="30,90,30,30" x:Name="canvas_main" VerticalAlignment="Stretch"
+                PreviewMouseLeftButtonDown="onCanvasMouseDown"  PreviewMouseLeftButtonUp="onCanvasMouseUp"  PreviewMouseMove="onCanvasMouseMove" Background="White" >
+        </Canvas>
+        <TextBox x:Name="tb_Index" HorizontalAlignment="Right" Margin="0,0,30,5" VerticalAlignment="Bottom" Width="100" Height="20"
+                 Background="Gray" BorderThickness="0"/>
     </Grid>
 </Window>

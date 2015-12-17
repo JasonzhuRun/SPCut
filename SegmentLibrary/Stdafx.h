@@ -1,7 +1,18 @@
-// stdafx.h : ±ê×¼ÏµÍ³°üº¬ÎÄ¼şµÄ°üº¬ÎÄ¼ş£¬
-// »òÊÇ¾­³£Ê¹ÓÃµ«²»³£¸ü¸ÄµÄ
-// ÌØ¶¨ÓÚÏîÄ¿µÄ°üº¬ÎÄ¼ş
+ï»¿// stdafx.h : æ ‡å‡†ç³»ç»ŸåŒ…å«æ–‡ä»¶çš„åŒ…å«æ–‡ä»¶ï¼Œ
+// æˆ–æ˜¯ç»å¸¸ä½¿ç”¨ä½†ä¸å¸¸æ›´æ”¹çš„
+// ç‰¹å®šäºé¡¹ç›®çš„åŒ…å«æ–‡ä»¶
 
 #pragma once
 
-
+#include "Torch\EMTrainer.h"
+#include "Torch\MeanVarNorm.h"
+#include "Torch\DiagonalGMM.h"
+#include "Torch\KFold.h"
+#include "Torch\KMeans.h"
+#include "Torch\DiskMatDataSet.h"
+#include "Torch\MatDataSet.h"
+#include "Torch\DataSet.h"
+#include "Torch\CmdLine.h"
+#include "Torch\NLLMeasurer.h"
+#include "Torch\Random.h"
+#include "Torch\FileListCmdOption.h"

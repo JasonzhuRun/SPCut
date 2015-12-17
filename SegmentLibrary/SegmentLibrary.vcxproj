@@ -19,7 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{5C5AF900-44D5-446D-84F0-962E9C298098}</ProjectGuid>
+    <ProjectGuid>{5208749C-DFE8-49CD-B51E-E6A5F3F10CD6}</ProjectGuid>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <Keyword>ManagedCProj</Keyword>
     <RootNamespace>SegmentLibrary</RootNamespace>
@@ -297,7 +297,10 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="Torch\Allocator.cpp" />
+    <ClCompile Include="Torch\Allocator.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
     <ClCompile Include="Torch\Bagging.cpp" />
     <ClCompile Include="Torch\BayesClassifier.cpp" />
     <ClCompile Include="Torch\BayesClassifierMachine.cpp" />

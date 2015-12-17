@@ -14,7 +14,7 @@
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
     <Filter Include="Torch">
-      <UniqueIdentifier>{2cb77bef-ae2e-4fe2-998b-30ca95734945}</UniqueIdentifier>
+      <UniqueIdentifier>{ae4e502d-77db-48e0-a1d8-a0d8f8603ec2}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
