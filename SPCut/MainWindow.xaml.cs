@@ -100,7 +100,7 @@ namespace SPCut
             {
                 mCanvas.Children.Remove(mRectangle);
             }
-            SegmentLibrary.Image.Segment();
+            SegmentLibrary.SPSegment.Segment(fileName,0,0,0,0);
         }
 
         private void onCanvasMouseDown(object sender, System.Windows.Input.MouseEventArgs e)

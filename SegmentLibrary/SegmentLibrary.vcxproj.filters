@@ -21,9 +21,6 @@
     <ClInclude Include="SegmentLibrary.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="Stdafx.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="resource.h">
       <Filter>头文件</Filter>
     </ClInclude>
@@ -483,15 +480,18 @@
     <ClInclude Include="Torch\XFile.h">
       <Filter>Torch</Filter>
     </ClInclude>
+    <ClInclude Include="SPImage.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Gmm.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="SegmentLibrary.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="AssemblyInfo.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="Stdafx.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="Torch\Allocator.cpp">
@@ -943,6 +943,15 @@
     </ClCompile>
     <ClCompile Include="Torch\XFile.cpp">
       <Filter>Torch</Filter>
+    </ClCompile>
+    <ClCompile Include="SPImage.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Gmm.cpp">
+      <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
