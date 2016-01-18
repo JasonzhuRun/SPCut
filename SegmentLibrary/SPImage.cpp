@@ -66,15 +66,15 @@ int SPImage::SpSegment(LPCTSTR lpszPathName, int left, int top, int right, int b
 	clock_t t1,t2,t10,t11,t12,t13,t14;
 	t1 = clock();
 	Log("-----Start of Segmentation-----\n");
-	for (int i = 0; i < 1; i++)
+	for (int i = 0; i < MAX_ITERATIONS; i++)
 	{
 		t10 = clock();
 		Modeling();
 		t11 = clock();
 		Log("modeling cost:{1,0:F4}s", i + 1, (t11 - t10) / 1000);
-		Lattice();
+		//Lattice();
 		t12 = clock();
-		Log("lattice cost:{1,0:F4}s", i + 1, (t12 - t11) / 1000);
+		//Log("lattice cost:{1,0:F4}s", i + 1, (t12 - t11) / 1000);
 		//Dijkstra();
 		t13 = clock();
 		//Log("dijkstra cost:{1,0:F4}s", i + 1, (t13 - t12) / 1000);
@@ -282,24 +282,32 @@ void SPImage::Mark()
 	int pointCount = mSegHeight*mSegWidth;
 	for (int i = 0; i < pointCount; i++)
 	{
-		float distanceFG = 0;
-		float diatanceBG = 0;
+		float distanceFG = 1e30;
+		float diatanceBG = 1e30;
 		for (int j = 0; j < BG_GAUSS_COUNT; j++)
 		{
-			diatanceBG += GaussDistance(0, &mSegData[i * MAX_COLOR_DIM], j);
+			float D = GaussDistance(0, &mSegData[i * MAX_COLOR_DIM], j);
+			if (D < diatanceBG)
+			{
+				diatanceBG = D;
+			}
 		}
 		
 		for (int j = 0; j < FG_GAUSS_COUNT; j++)
 		{
-			distanceFG += GaussDistance(1, &mSegData[i * MAX_COLOR_DIM], j);
+			float D = GaussDistance(1, &mSegData[i * MAX_COLOR_DIM], j);
+			if (D < distanceFG)
+			{
+				distanceFG = D;
+			}
 		}
 		if (distanceFG > diatanceBG)
 		{
-			mSegMark[i] = MARK_FOREGROUND;
+			mSegMark[i] = MARK_BACKGROUND;
 		}
 		else
 		{
-			mSegMark[i] = MARK_BACKGROUND;
+			mSegMark[i] = MARK_FOREGROUND;
 		}
 	}
 }
