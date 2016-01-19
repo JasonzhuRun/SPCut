@@ -138,6 +138,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Fibonacci\fib.h" />
+    <ClInclude Include="Fibonacci\fibpriv.h" />
     <ClInclude Include="Gmm.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="SegmentLibrary.h" />
@@ -297,6 +299,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AssemblyInfo.cpp" />
+    <ClCompile Include="Fibonacci\fib.cpp" />
     <ClCompile Include="Gmm.cpp" />
     <ClCompile Include="SegmentLibrary.cpp" />
     <ClCompile Include="SPImage.cpp" />

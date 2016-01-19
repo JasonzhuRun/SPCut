@@ -16,6 +16,9 @@
     <Filter Include="Torch">
       <UniqueIdentifier>{ae4e502d-77db-48e0-a1d8-a0d8f8603ec2}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Fibonacci">
+      <UniqueIdentifier>{d39d26b7-1737-46b9-a8fe-9ad3a0dbb915}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="SegmentLibrary.h">
@@ -486,6 +489,12 @@
     <ClInclude Include="Gmm.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="Fibonacci\fib.h">
+      <Filter>Fibonacci</Filter>
+    </ClInclude>
+    <ClInclude Include="Fibonacci\fibpriv.h">
+      <Filter>Fibonacci</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="SegmentLibrary.cpp">
@@ -952,6 +961,9 @@
     </ClCompile>
     <ClCompile Include="Gmm.cpp">
       <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Fibonacci\fib.cpp">
+      <Filter>Fibonacci</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
