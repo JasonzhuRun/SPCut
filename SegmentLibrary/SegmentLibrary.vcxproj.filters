@@ -956,14 +956,14 @@
     <ClCompile Include="SPImage.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="main.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="Gmm.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="Fibonacci\fib.cpp">
       <Filter>Fibonacci</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

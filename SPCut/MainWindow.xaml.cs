@@ -97,10 +97,10 @@ namespace SPCut
         private void onSegmentBtnClick(object sender, RoutedEventArgs e)
         {
             if (mRectangle != null)
-            {
+            { 
+                SegmentLibrary.SPSegment.Segment(fileName,(int)mPointLT.X, (int)mPointLT.Y,(int)mPointRB.X, (int)mPointRB.Y);
                 mCanvas.Children.Remove(mRectangle);
             }
-            SegmentLibrary.SPSegment.Segment(fileName,0,0,0,0);
         }
 
         private void onCanvasMouseDown(object sender, System.Windows.Input.MouseEventArgs e)

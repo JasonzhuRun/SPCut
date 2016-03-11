@@ -3,6 +3,10 @@
 #include <atlimage.h>
 #include <vector>
 #include <time.h>
+#include <fstream>
+#include <string>
+#include <iomanip>
+#include <iostream>
 #include "Gmm.h"
 #include "Fibonacci/fib.h"
 #include "Fibonacci/fibpriv.h"
@@ -10,16 +14,18 @@
 using namespace System;
 /// transfer the rgb space to lab space
 void RGB2Lab(float R, float G, float B, float &L, float &a, float &b);
-/// is in the center of rectangle
+/// in the center of rectangle
 bool isCenter(int h,int w,int height,int width);
+/// on the boundary of rectangle
+bool isBoundary(int h, int w, int height, int width);
 class SPImage
 {
 public:
 	// parameter
-	const int MAX_COLOR_DIM = 5;	// 颜色特征维度
+	const int MAX_COLOR_DIM = 3;	// 颜色特征维度
 	const int MAX_ITERATIONS = 3;	// 最大迭代次数
-	const int BG_GAUSS_COUNT = 5;	// 背景高斯成分个数
-	const int FG_GAUSS_COUNT = 5;	// 前景高斯成分个数
+	const int BG_GAUSS_COUNT = 10;	// 背景高斯成分个数
+	const int FG_GAUSS_COUNT = 10;	// 前景高斯成分个数
 	// constant
 	const int SEG_RESULT_LOAD_ERROR = 0x01;
 	const int SEG_RESULT_NOT_24bit = 0x02;
@@ -53,14 +59,14 @@ private:
 	float** mVarBG;    //背景高斯模型的方差
 	float* mLogwBG;    //背景高斯模型权值的log值
 				   
-	std::vector < std::vector <int> > edge;			// edge数组存放图中的所有边
-	std::vector < std::vector <float> > weights;	// 存放图中所有边的权值
+	int** edge;			// edge数组存放图中的所有边
+	float** weights;	// 存放图中所有边的权值
 
-	std::vector < std::vector <float> > distances;	// 存放图中所有点到前景源点和背景汇点的距离
+	float** distances;	// 存放图中所有点到前景源点和背景汇点的距离
 
 private:
 	int LoadOriginalImage(LPCTSTR lpszPathName);
-	bool InitSpace();
+	void InitSpace();
 	void ReleaseSpace();
 	void Modeling();
 	void Lattice();
