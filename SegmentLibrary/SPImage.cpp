@@ -22,7 +22,7 @@ int SPImage::SpSegment(LPCTSTR lpszPathName, int left, int top, int right, int b
 			{
 				mSegData[(i*mSegWidth + j) * MAX_COLOR_DIM + k] = mImgData[((top + i)*mWidth + left + j) * MAX_COLOR_DIM + k];
 			}
-			mSegData[(i*mSegWidth + j) * MAX_COLOR_DIM + 3] = getPositionIndex(i, j, mSegHeight, mSegWidth);
+			//mSegData[(i*mSegWidth + j) * MAX_COLOR_DIM + 3] = getPositionIndex(i, j, mSegHeight, mSegWidth);
 		}
 	}
 
@@ -31,13 +31,11 @@ int SPImage::SpSegment(LPCTSTR lpszPathName, int left, int top, int right, int b
 	{
 		for (int j = 0; j < mSegWidth; j++)
 		{
-			//if (isCenter(i,j, mSegHeight, mSegWidth))
-			if (mSegData[(i*mSegWidth + j) * MAX_COLOR_DIM + 3] < 4)
+			if (isCenter(i,j, mSegHeight, mSegWidth))
 			{
 				mSegMark[i*mSegWidth + j] = MARK_FOREGROUND;
 			}
-			//else if (isBoundary(i, j, mSegHeight, mSegWidth))
-			else if (mSegData[(i*mSegWidth + j) * MAX_COLOR_DIM + 3] >  8)
+			else if (isBoundary(i, j, mSegHeight, mSegWidth))
 			{
 				mSegMark[i*mSegWidth + j] = MARK_BACKGROUND;
 			}
@@ -602,6 +600,16 @@ bool isBoundary(int h, int w, int height, int width)
 	return false;
 }
 
+int getPositionIndex(int h, int w, int height, int width)
+{
+	double pro_h = 1.0 * h / height;
+	double pro_w = 1.0 * w / width;
+	pro_h = abs(pro_h - 0.5);
+	pro_w = abs(pro_w - 0.5);
+	double pro = pro_h > pro_w ? pro_h : pro_w;
+	return pro * 20;
+}
+
 bool isPriorForegroud(int h, int w, int height, int width)
 {
 	const float pro = 0.4;
@@ -616,14 +624,4 @@ bool isPriorBackgroud(int h, int w, int height, int width)
 {
 
 	return true;
-}
-
-int getPositionIndex(int h, int w, int height, int width)
-{
-	double pro_h = 1.0 * h / height;
-	double pro_w = 1.0 * w / width;
-	pro_h = abs(pro_h - 0.5);
-	pro_w = abs(pro_w - 0.5);
-	double pro = pro_h > pro_w ? pro_h : pro_w;
-	return pro * 20;
 }
