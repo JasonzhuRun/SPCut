@@ -18,22 +18,26 @@ int SPImage::SpSegment(LPCTSTR lpszPathName, int left, int top, int right, int b
 	{
 		for (int j = 0; j < mSegWidth; j++)
 		{
-			for (int k = 0; k < MAX_COLOR_DIM; k++)
+			for (int k = 0; k < 3; k++)
 			{
 				mSegData[(i*mSegWidth + j) * MAX_COLOR_DIM + k] = mImgData[((top + i)*mWidth + left + j) * MAX_COLOR_DIM + k];
 			}
+			mSegData[(i*mSegWidth + j) * MAX_COLOR_DIM + 3] = getPositionIndex(i, j, mSegHeight, mSegWidth);
 		}
 	}
+
 	// 预标记
 	for (int i = 0; i < mSegHeight; i++)
 	{
 		for (int j = 0; j < mSegWidth; j++)
 		{
-			if (isCenter(i,j, mSegHeight, mSegWidth))
+			//if (isCenter(i,j, mSegHeight, mSegWidth))
+			if (mSegData[(i*mSegWidth + j) * MAX_COLOR_DIM + 3] < 4)
 			{
 				mSegMark[i*mSegWidth + j] = MARK_FOREGROUND;
 			}
-			else if (isBoundary(i, j, mSegHeight, mSegWidth))
+			//else if (isBoundary(i, j, mSegHeight, mSegWidth))
+			else if (mSegData[(i*mSegWidth + j) * MAX_COLOR_DIM + 3] >  8)
 			{
 				mSegMark[i*mSegWidth + j] = MARK_BACKGROUND;
 			}
@@ -52,7 +56,6 @@ int SPImage::SpSegment(LPCTSTR lpszPathName, int left, int top, int right, int b
 	// 开始迭代
 	for (int i = 0; i < MAX_ITERATIONS; i++)
 	{
-		int a = remove("..\\result\\binary.jpg");
 	//	t10 = clock();
 		Modeling();
 	//	t11 = clock();
@@ -79,8 +82,8 @@ int SPImage::SpSegment(LPCTSTR lpszPathName, int left, int top, int right, int b
 		out.close();*/
 	//	t12 = clock();
 	//	Log("updateWeigths cost:{1,0:F4}s", i + 1, (t12 - t11) / 1000.0);
-		Dijkstra(0);
-		Dijkstra(1);
+	//	Dijkstra(0);
+	//	Dijkstra(1);
 	//	t13 = clock();
 	//	Log("dijkstra cost:{1,0:F4}s", i + 1, (t13 - t12) / 1000.0);
 		Mark();
@@ -208,8 +211,6 @@ int SPImage::LoadOriginalImage(LPCTSTR lpszPathName)
 			mImgData[(i*mWidth + j) * MAX_COLOR_DIM + 0] = L;
 			mImgData[(i*mWidth + j) * MAX_COLOR_DIM + 1] = a;
 			mImgData[(i*mWidth + j) * MAX_COLOR_DIM + 2] = b;
-	//		mImgData[(i*mWidth + j) * MAX_COLOR_DIM + 3] = i;
-	//		mImgData[(i*mWidth + j) * MAX_COLOR_DIM + 4] = j;
 		}
 		bits += pitch;
 	}
@@ -446,22 +447,13 @@ void SPImage::Test()
 	int pitch = mImgTest.GetPitch();
 	BYTE *bits = (BYTE *)mImgTest.GetBits();
 
-	for (int i = 0; i < mHeight; i++)
+	for (int i = 0; i < mSegHeight; i++)
 	{
-		for (int j = 0; j < mWidth; j++)
+		for (int j = 0; j < mSegWidth; j++)
 		{
-			if (mImgMark[i*mWidth + j] == MARK_FOREGROUND)
-			{
-				bits[j * 3 + 0] = 255;
-				bits[j * 3 + 1] = 255;
-				bits[j * 3 + 2] = 255;
-			}
-			else
-			{
-				bits[j * 3 + 0] = 255;
-				bits[j * 3 + 1] = 255;
-				bits[j * 3 + 2] = 255;
-			}
+			bits[j * 3 + 0] = mSegData[(i*mSegWidth + j) * MAX_COLOR_DIM + 3] * 25;
+			bits[j * 3 + 1] = mSegData[(i*mSegWidth + j) * MAX_COLOR_DIM + 3] * 25;
+			bits[j * 3 + 2] = mSegData[(i*mSegWidth + j) * MAX_COLOR_DIM + 3] * 25;
 		}
 		bits += pitch;
 	}
@@ -492,7 +484,7 @@ void SPImage::Mark()
 }
 // 计算到高斯混合模型的距离
 // label 0:前景 1:背景
-float SPImage::GaussDistance(int label, float z[3])
+float SPImage::GaussDistance(int label, float z[MAX_DIM])
 {
 	if (label == 0)
 	{
@@ -523,7 +515,7 @@ float SPImage::GaussDistance(int label, float z[3])
 }
 // 计算到高斯混合模型的距离
 // label 0:前景 1:背景
-float SPImage::GaussDistance(int label,float z[3],int k)
+float SPImage::GaussDistance(int label,float z[MAX_DIM],int k)
 {
 	float D;
 	if (label == 0)
@@ -624,4 +616,14 @@ bool isPriorBackgroud(int h, int w, int height, int width)
 {
 
 	return true;
+}
+
+int getPositionIndex(int h, int w, int height, int width)
+{
+	double pro_h = 1.0 * h / height;
+	double pro_w = 1.0 * w / width;
+	pro_h = abs(pro_h - 0.5);
+	pro_w = abs(pro_w - 0.5);
+	double pro = pro_h > pro_w ? pro_h : pro_w;
+	return pro * 20;
 }

@@ -1,5 +1,6 @@
 #pragma once
 #define Log System::Console::WriteLine
+#define MAX_DIM 4
 #include <atlimage.h>
 #include <vector>
 #include <time.h>
@@ -18,14 +19,17 @@ void RGB2Lab(float R, float G, float B, float &L, float &a, float &b);
 bool isCenter(int h,int w,int height,int width);
 /// on the boundary of rectangle
 bool isBoundary(int h, int w, int height, int width);
+
+int getPositionIndex(int h, int w, int height, int width);
+
 class SPImage
 {
 public:
 	// parameter
-	const int MAX_COLOR_DIM = 3;	// 颜色特征维度
+	const int MAX_COLOR_DIM = 4;	// 颜色特征维度
 	const int MAX_ITERATIONS = 3;	// 最大迭代次数
-	const int BG_GAUSS_COUNT = 10;	// 背景高斯成分个数
-	const int FG_GAUSS_COUNT = 10;	// 前景高斯成分个数
+	const int BG_GAUSS_COUNT = 5;	// 背景高斯成分个数
+	const int FG_GAUSS_COUNT = 5;	// 前景高斯成分个数
 	// constant
 	const int SEG_RESULT_LOAD_ERROR = 0x01;
 	const int SEG_RESULT_NOT_24bit = 0x02;
