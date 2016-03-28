@@ -22,7 +22,6 @@ int SPImage::SpSegment(LPCTSTR lpszPathName, int left, int top, int right, int b
 			{
 				mSegData[(i*mSegWidth + j) * MAX_COLOR_DIM + k] = mImgData[((top + i)*mWidth + left + j) * MAX_COLOR_DIM + k];
 			}
-			//mSegData[(i*mSegWidth + j) * MAX_COLOR_DIM + 3] = getPositionIndex(i, j, mSegHeight, mSegWidth);
 		}
 	}
 
@@ -45,6 +44,7 @@ int SPImage::SpSegment(LPCTSTR lpszPathName, int left, int top, int right, int b
 			}
 		}
 	}
+//	Test(1);
 	// 计算运行时间
 	clock_t t1,t2,t10,t11,t12,t13,t14;
 	t1 = clock();
@@ -80,8 +80,8 @@ int SPImage::SpSegment(LPCTSTR lpszPathName, int left, int top, int right, int b
 		out.close();*/
 	//	t12 = clock();
 	//	Log("updateWeigths cost:{1,0:F4}s", i + 1, (t12 - t11) / 1000.0);
-	//	Dijkstra(0);
-	//	Dijkstra(1);
+		Dijkstra(0);
+		Dijkstra(1);
 	//	t13 = clock();
 	//	Log("dijkstra cost:{1,0:F4}s", i + 1, (t13 - t12) / 1000.0);
 		Mark();
@@ -439,23 +439,53 @@ void SPImage::GenerateImage()
 	mImgOverlay.Save(_T("C:\\Users\\GaoYixuan\\Workspaces\\SPCut\\result\\overlay.jpg"), Gdiplus::ImageFormatJPEG);
 }
 // 测试图像
-void SPImage::Test()
+void SPImage::Test(int type)
 {
 
 	int pitch = mImgTest.GetPitch();
 	BYTE *bits = (BYTE *)mImgTest.GetBits();
-
-	for (int i = 0; i < mSegHeight; i++)
+	if (type == 0)
 	{
-		for (int j = 0; j < mSegWidth; j++)
+		for (int i = 0; i < mSegHeight; i++)
 		{
-			bits[j * 3 + 0] = mSegData[(i*mSegWidth + j) * MAX_COLOR_DIM + 3] * 25;
-			bits[j * 3 + 1] = mSegData[(i*mSegWidth + j) * MAX_COLOR_DIM + 3] * 25;
-			bits[j * 3 + 2] = mSegData[(i*mSegWidth + j) * MAX_COLOR_DIM + 3] * 25;
+			for (int j = 0; j < mSegWidth; j++)
+			{
+				bits[j * 3 + 0] = mSegData[(i*mSegWidth + j) * MAX_COLOR_DIM + 3] * 25;
+				bits[j * 3 + 1] = mSegData[(i*mSegWidth + j) * MAX_COLOR_DIM + 3] * 25;
+				bits[j * 3 + 2] = mSegData[(i*mSegWidth + j) * MAX_COLOR_DIM + 3] * 25;
+			}
+			bits += pitch;
 		}
-		bits += pitch;
 	}
-	mImgTest.Save(_T("..\\result\\test.jpg"), Gdiplus::ImageFormatJPEG);
+	else
+	{
+		for (int i = 0; i < mSegHeight; i++)
+		{
+			for (int j = 0; j < mSegWidth; j++)
+			{
+				if (mSegMark[i*mSegWidth + j] == MARK_FOREGROUND)
+				{
+					bits[j * 3 + 0] = 255;
+					bits[j * 3 + 1] = 255;
+					bits[j * 3 + 2] = 255;
+				}
+				else if (mSegMark[i*mSegWidth + j] == MARK_BACKGROUND)
+				{
+					bits[j * 3 + 0] = 0;
+					bits[j * 3 + 1] = 0;
+					bits[j * 3 + 2] = 0;
+				}
+				else
+				{
+					bits[j * 3 + 0] = 127;
+					bits[j * 3 + 1] = 127;
+					bits[j * 3 + 2] = 127;
+				}
+			}
+			bits += pitch;
+		}
+	}
+	mImgTest.Save(_T("C:\\Users\\GaoYixuan\\Workspaces\\SPCut\\result\\test.jpg"), Gdiplus::ImageFormatJPEG);
 }
 // 标记各个像素点的属性
 void SPImage::Mark()
@@ -468,8 +498,8 @@ void SPImage::Mark()
 	for (int i = 0; i < pointCount; i++)
 	{
 		//out << distances[i][0] << "  " << distances[i][1] << std::endl;
-		//if (distances[i][0] > distances[i][1])
-		if (weights[i][8] > weights[i][9])
+		if (distances[i][0] > distances[i][1])
+		//if (weights[i][8] > weights[i][9])
 		{
 			mSegMark[i] = MARK_BACKGROUND;
 		}

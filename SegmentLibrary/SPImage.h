@@ -79,7 +79,7 @@ private:
 	void Dijkstra(const int label);
 	void Mark();
 	void GenerateImage();
-	void Test();
+	void Test(int type);
 	float GaussDistance(int label, float z[5]);					// 计算到高斯模型的距离
 	float GaussDistance(int label, float z[5],int k);			// 计算到高斯模型的距离
 	float EulerDistance(float z1[3],float z2[3]);				// 计算点与点之间的欧式距离
