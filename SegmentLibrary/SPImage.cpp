@@ -82,8 +82,8 @@ int SPImage::SpSegment(LPCTSTR lpszPathName, int left, int top, int right, int b
 		out.close();*/
 	//	t12 = clock();
 	//	Log("updateWeigths cost:{1,0:F4}s", i + 1, (t12 - t11) / 1000.0);
-	//	Dijkstra(0);
-	//	Dijkstra(1);
+		Dijkstra(0);
+		Dijkstra(1);
 	//	t13 = clock();
 	//	Log("dijkstra cost:{1,0:F4}s", i + 1, (t13 - t12) / 1000.0);
 		Mark();
@@ -470,8 +470,8 @@ void SPImage::Mark()
 	for (int i = 0; i < pointCount; i++)
 	{
 		//out << distances[i][0] << "  " << distances[i][1] << std::endl;
-		//if (distances[i][0] > distances[i][1])
-		if (weights[i][8] > weights[i][9])
+		if (distances[i][0] > distances[i][1])
+		//if (weights[i][8] > weights[i][9])
 		{
 			mSegMark[i] = MARK_BACKGROUND;
 		}
