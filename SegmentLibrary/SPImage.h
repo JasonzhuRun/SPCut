@@ -1,6 +1,6 @@
 #pragma once
 #define Log System::Console::WriteLine
-#define MAX_DIM 3
+#define MAX_DIM 5
 #include <atlimage.h>
 #include <vector>
 #include <time.h>
@@ -26,7 +26,7 @@ class SPImage
 {
 public:
 	// parameter
-	const int MAX_COLOR_DIM = 3;	// 颜色特征维度
+	const int MAX_COLOR_DIM = 5;	// 颜色特征维度
 	const int MAX_ITERATIONS = 3;	// 最大迭代次数
 	const int BG_GAUSS_COUNT = 5;	// 背景高斯成分个数
 	const int FG_GAUSS_COUNT = 5;	// 前景高斯成分个数

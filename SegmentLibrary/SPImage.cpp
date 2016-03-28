@@ -22,6 +22,8 @@ int SPImage::SpSegment(LPCTSTR lpszPathName, int left, int top, int right, int b
 			{
 				mSegData[(i*mSegWidth + j) * MAX_COLOR_DIM + k] = mImgData[((top + i)*mWidth + left + j) * MAX_COLOR_DIM + k];
 			}
+			mSegData[(i*mSegWidth + j) * MAX_COLOR_DIM + 3] = i;
+			mSegData[(i*mSegWidth + j) * MAX_COLOR_DIM + 4] = j;
 		}
 	}
 
