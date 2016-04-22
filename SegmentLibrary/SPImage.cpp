@@ -25,7 +25,7 @@ int SPImage::SpSegment(LPCTSTR lpszPathName, int left, int top, int right, int b
 			mSegData[(i*mSegWidth + j) * MAX_COLOR_DIM + 3] = getPositionIndex(i, j, mSegHeight, mSegWidth);
 		}
 	}
-
+	//建模，划分种子点
 	// 预标记
 	for (int i = 0; i < mSegHeight; i++)
 	{
