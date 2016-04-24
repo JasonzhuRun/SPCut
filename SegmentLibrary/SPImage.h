@@ -1,6 +1,6 @@
 #pragma once
 #define Log System::Console::WriteLine
-#define MAX_DIM 4
+//#define MAX_DIM 4
 #include <atlimage.h>
 #include <vector>
 #include <time.h>
@@ -26,7 +26,8 @@ class SPImage
 {
 public:
 	// parameter
-	const int MAX_COLOR_DIM = 4;	// 颜色特征维度
+	const int MAX_COLOR_DIM = 3;	// 颜色特征维度
+	const int MAX_FEATURE_DIM = 4;	// 总的特征维度
 	const int MAX_ITERATIONS = 3;	// 最大迭代次数
 	const int BG_GAUSS_COUNT = 5;	// 背景高斯成分个数
 	const int FG_GAUSS_COUNT = 5;	// 前景高斯成分个数
@@ -72,15 +73,15 @@ private:
 	int LoadOriginalImage(LPCTSTR lpszPathName);
 	void InitSpace();
 	void ReleaseSpace();
-	void Modeling();
+	void Modeling(int dim);
 	void Lattice();
-	void UpdateWeights();
+	void UpdateWeights(int dim);
 	int Edge(int h,int w);
 	void Dijkstra(const int label);
-	void Mark();
+	void Mark(int type);
 	void GenerateImage();
 	void Test();
-	float GaussDistance(int label, float z[5]);					// 计算到高斯模型的距离
-	float GaussDistance(int label, float z[5],int k);			// 计算到高斯模型的距离
+	float GaussDistance(int label, float* z,int dim);					// 计算到高斯模型的距离
+	float GaussDistance(int label, float* z,int dim, int k);			// 计算到高斯模型的距离
 	float EulerDistance(float z1[3],float z2[3]);				// 计算点与点之间的欧式距离
 };

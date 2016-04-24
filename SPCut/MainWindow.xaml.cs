@@ -100,6 +100,10 @@ namespace SPCut
             { 
                 SegmentLibrary.SPSegment.Segment(fileName,(int)mPointLT.X, (int)mPointLT.Y,(int)mPointRB.X, (int)mPointRB.Y);
                 mCanvas.Children.Remove(mRectangle);
+                BitmapImage image = new BitmapImage(new Uri("C:\\Users\\GaoYixuan\\Workspaces\\SPCut\\result\\overlay.jpg"));
+                canvas_main.Height = image.PixelHeight;
+                canvas_main.Width = image.PixelWidth;
+                canvas_main.Background = new ImageBrush(image);
             }
         }
 

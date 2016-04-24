@@ -20,77 +20,32 @@ int SPImage::SpSegment(LPCTSTR lpszPathName, int left, int top, int right, int b
 		{
 			for (int k = 0; k < 3; k++)
 			{
-				mSegData[(i*mSegWidth + j) * MAX_COLOR_DIM + k] = mImgData[((top + i)*mWidth + left + j) * MAX_COLOR_DIM + k];
+				mSegData[(i*mSegWidth + j) * MAX_FEATURE_DIM + k] = mImgData[((top + i)*mWidth + left + j) * MAX_COLOR_DIM + k];
 			}
-			mSegData[(i*mSegWidth + j) * MAX_COLOR_DIM + 3] = getPositionIndex(i, j, mSegHeight, mSegWidth);
-		}
-	}
-	//建模，划分种子点
-	// 预标记
-	for (int i = 0; i < mSegHeight; i++)
-	{
-		for (int j = 0; j < mSegWidth; j++)
-		{
-			//if (isCenter(i,j, mSegHeight, mSegWidth))
-			if (mSegData[(i*mSegWidth + j) * MAX_COLOR_DIM + 3] < 4)
-			{
-				mSegMark[i*mSegWidth + j] = MARK_FOREGROUND;
-			}
-			//else if (isBoundary(i, j, mSegHeight, mSegWidth))
-			else if (mSegData[(i*mSegWidth + j) * MAX_COLOR_DIM + 3] >  8)
-			{
-				mSegMark[i*mSegWidth + j] = MARK_BACKGROUND;
-			}
-			else
-			{			
-				mSegMark[i*mSegWidth + j] = MARK_UNKNOW;
-			}
+			mSegData[(i*mSegWidth + j) * MAX_FEATURE_DIM + 3] = getPositionIndex(i, j, mSegHeight, mSegWidth);
 		}
 	}
 	// 计算运行时间
-	clock_t t1,t2,t10,t11,t12,t13,t14;
-	t1 = clock();
 	Log("-----Start of Segmentation-----\n");
+	clock_t t1, t2, t10, t11, t12, t13, t14;
+	t1 = clock();
+	// 预标记
+	Mark(0);
 	// 建立图结构
 	Lattice();
+	// 建模 预分类种子点
+	Modeling(MAX_COLOR_DIM);
+	UpdateWeights(MAX_COLOR_DIM);
+	Mark(1);
 	// 开始迭代
-	for (int i = 0; i < MAX_ITERATIONS; i++)
+	/*for (int i = 0; i < MAX_ITERATIONS; i++)
 	{
-	//	t10 = clock();
-		Modeling();
-	//	t11 = clock();
-	//	Log("modeling cost:{1,0:F4}s", i + 1, (t11 - t10) / 1000.0);
-		UpdateWeights();
-		/*std::ofstream out("C:\\result\\ModelDistance.txt",std::ios::app);
-		out <<"----------------------------------------------------------"<< std::endl;
-		out << std::endl;
-		out << std::endl;
-		out.flags(std::ios::right); //右对齐
-		for (int i = 0; i < mSegHeight; i++)
-		{
-			for (int j = 0; j < mSegWidth; j++)
-			{
-				int index = i*mSegWidth + j;
-				for (int k = 0; k < 8; k++)
-				{
-					out << std::setw(10) << weights[index][k] << " ";
-				}
-				out << "| ";
-				out << weights[index][8] << "  " << weights[index][9] << std::endl;
-			}
-		}
-		out.close();*/
-	//	t12 = clock();
-	//	Log("updateWeigths cost:{1,0:F4}s", i + 1, (t12 - t11) / 1000.0);
+		Modeling(MAX_FEATURE_DIM);
+		UpdateWeights(MAX_FEATURE_DIM);
 		Dijkstra(0);
 		Dijkstra(1);
-	//	t13 = clock();
-	//	Log("dijkstra cost:{1,0:F4}s", i + 1, (t13 - t12) / 1000.0);
-		Mark();
-	//	t14 = clock();
-	//	Log("mark cost:{1,0:F4}s", i + 1, (t14 - t13) / 1000.0);
-	//	Log("No.{0,0:D} iteration total cost:{1,0:F4}s\n",i+1,(t14-t11)/1000.0);
-	}
+		Mark(2);
+	}*/
 	// 将兴趣区域的标记转移到全图上面
 	for (int i = 0; i < mSegHeight; i++)
 	{
@@ -112,30 +67,30 @@ void SPImage::InitSpace()
 	// mImgData = new float[mWidth * mHeight * MAX_COLOR_DIM];
 	// mImgMark = new int[mWidth * mHeight];
 	int pointCount = mSegWidth*mSegHeight;
-	mSegData = new float[pointCount*MAX_COLOR_DIM];
+	mSegData = new float[pointCount*MAX_FEATURE_DIM];
 	mSegMark = new int[pointCount];
 
 	mMeansBG = new float*[BG_GAUSS_COUNT];
 	for (int i = 0; i < BG_GAUSS_COUNT; i++)
 	{
-		mMeansBG[i] = new float[MAX_COLOR_DIM];
+		mMeansBG[i] = new float[MAX_FEATURE_DIM];
 	}
 	mVarBG = new float *[BG_GAUSS_COUNT];
 	for (int i = 0; i < BG_GAUSS_COUNT; i++)
 	{
-		mVarBG[i] = new float[MAX_COLOR_DIM];
+		mVarBG[i] = new float[MAX_FEATURE_DIM];
 	}
 	mLogwBG = new float[BG_GAUSS_COUNT];
 
 	mMeansFG = new float*[FG_GAUSS_COUNT];
 	for (int i = 0; i < FG_GAUSS_COUNT; i++)
 	{
-		mMeansFG[i] = new float[MAX_COLOR_DIM];
+		mMeansFG[i] = new float[MAX_FEATURE_DIM];
 	}
 	mVarFG = new float *[FG_GAUSS_COUNT];
 	for (int i = 0; i < FG_GAUSS_COUNT; i++)
 	{
-		mVarFG[i] = new float[MAX_COLOR_DIM];
+		mVarFG[i] = new float[MAX_FEATURE_DIM];
 	}
 	mLogwFG = new float[FG_GAUSS_COUNT];
 
@@ -225,7 +180,7 @@ int SPImage::LoadOriginalImage(LPCTSTR lpszPathName)
 	return SEG_RESULT_LOAD_SUCCESS;
 }
 /// 生成高斯混合模型
-void SPImage::Modeling()
+void SPImage::Modeling(int dim)
 {
 	int pointCount = mSegHeight*mSegWidth;
 	int bgCount = 0;		// 背景建模像素点计数
@@ -236,20 +191,20 @@ void SPImage::Modeling()
 	{
 		if (mSegMark[i] == MARK_BACKGROUND)
 		{
-			bgpoint[bgCount] = new real[MAX_COLOR_DIM];
-			memcpy(bgpoint[bgCount], &mSegData[i * MAX_COLOR_DIM], MAX_COLOR_DIM * sizeof(real));
+			bgpoint[bgCount] = new real[dim];
+			memcpy(bgpoint[bgCount], &mSegData[i * dim], dim * sizeof(real));
 			bgCount++;
 		}
 		else if (mSegMark[i] == MARK_FOREGROUND)
 		{
-			fgpoint[fgCount] = new real[MAX_COLOR_DIM];
-			memcpy(fgpoint[fgCount], &mSegData[i * MAX_COLOR_DIM], MAX_COLOR_DIM * sizeof(real));
+			fgpoint[fgCount] = new real[dim];
+			memcpy(fgpoint[fgCount], &mSegData[i * dim], dim * sizeof(real));
 			fgCount++;
 		}
 	}
 
-	GMM(bgpoint, MAX_COLOR_DIM, bgCount, mMeansBG, mVarBG, mLogwBG, BG_GAUSS_COUNT);
-	GMM(fgpoint, MAX_COLOR_DIM, fgCount, mMeansFG, mVarFG, mLogwFG, FG_GAUSS_COUNT);
+	GMM(bgpoint, dim, bgCount, mMeansBG, mVarBG, mLogwBG, BG_GAUSS_COUNT);
+	GMM(fgpoint, dim, fgCount, mMeansFG, mVarFG, mLogwFG, FG_GAUSS_COUNT);
 
 	for (int i = 0; i < bgCount; i++)
 	{
@@ -292,7 +247,7 @@ void SPImage::Lattice()
 				// 有效边则计算权值
 				if (edge[index][k] != -1)
 				{
-					weights[index][k] = EulerDistance(&mSegData[index * MAX_COLOR_DIM], &mSegData[edge[index][k] * MAX_COLOR_DIM]);
+					weights[index][k] = EulerDistance(&mSegData[index * MAX_FEATURE_DIM], &mSegData[edge[index][k] * MAX_FEATURE_DIM]);
 				}
 				// 标记无效边
 				else
@@ -304,7 +259,7 @@ void SPImage::Lattice()
 	}
 }
 // 更新到高斯模型的距离
-void SPImage::UpdateWeights()
+void SPImage::UpdateWeights(int dim)
 {
 	
 	for (int i = 0; i < mSegHeight; i++)
@@ -312,8 +267,8 @@ void SPImage::UpdateWeights()
 		for (int j = 0; j < mSegWidth; j++)
 		{
 			int index = i*mSegWidth + j;
-			weights[index][8] =	GaussDistance(0,&mSegData[index * MAX_COLOR_DIM]);
-			weights[index][9] = GaussDistance(1,&mSegData[index * MAX_COLOR_DIM]);
+			weights[index][8] =	GaussDistance(0,&mSegData[index * MAX_FEATURE_DIM], dim);
+			weights[index][9] = GaussDistance(1,&mSegData[index * MAX_FEATURE_DIM], dim);
 		}
 	}
 
@@ -458,40 +413,90 @@ void SPImage::Test()
 		bits += pitch;
 	}
 	mImgTest.Save(_T("..\\result\\test.jpg"), Gdiplus::ImageFormatJPEG);
+	/*std::ofstream out("C:\\result\\ModelDistance.txt",std::ios::app);
+	out <<"----------------------------------------------------------"<< std::endl;
+	out << std::endl;
+	out << std::endl;
+	out.flags(std::ios::right); //右对齐
+	for (int i = 0; i < mSegHeight; i++)
+	{
+	for (int j = 0; j < mSegWidth; j++)
+	{
+	int index = i*mSegWidth + j;
+	for (int k = 0; k < 8; k++)
+	{
+	out << std::setw(10) << weights[index][k] << " ";
+	}
+	out << "| ";
+	out << weights[index][8] << "  " << weights[index][9] << std::endl;
+	}
+	}
+	out.close();*/
 }
 // 标记各个像素点的属性
-void SPImage::Mark()
+void SPImage::Mark(int type)
 {
-	
-	
-	//std::ofstream out("..\\result\\DijDistance.txt");
-	//out << "----------------------------------" << std::endl;
 	int pointCount = mSegHeight*mSegWidth;
-	for (int i = 0; i < pointCount; i++)
+	if (type == 0)		// 根据像素点原始位置标记
 	{
-		//out << distances[i][0] << "  " << distances[i][1] << std::endl;
-		if (distances[i][0] > distances[i][1])
-		//if (weights[i][8] > weights[i][9])
+		for (int i = 0; i < mSegHeight; i++)
 		{
-			mSegMark[i] = MARK_BACKGROUND;
-		}
-		else
-		{
-			mSegMark[i] = MARK_FOREGROUND;
+			for (int j = 0; j < mSegWidth; j++)
+			{
+				if (mSegData[(i*mSegWidth + j) * MAX_FEATURE_DIM + 3] < 4)
+				{
+					mSegMark[i*mSegWidth + j] = MARK_FOREGROUND;
+				}
+				else if (mSegData[(i*mSegWidth + j) * MAX_FEATURE_DIM + 3] >  8)
+				{
+					mSegMark[i*mSegWidth + j] = MARK_BACKGROUND;
+				}
+				else
+				{
+					mSegMark[i*mSegWidth + j] = MARK_UNKNOW;
+				}
+			}
 		}
 	}
-	//out.close();
+	else if (type == 1)	// 根据高斯混合模型标记
+	{
+		for (int i = 0; i < pointCount; i++)
+		{
+			if (weights[i][8] > weights[i][9])
+			{
+				mSegMark[i] = MARK_BACKGROUND;
+			}
+			else
+			{
+				mSegMark[i] = MARK_FOREGROUND;
+			}
+		}
+	}
+	else if (type == 2)	// 根据最短路径标记
+	{
+		for (int i = 0; i < pointCount; i++)
+		{
+			if (distances[i][0] > distances[i][1])
+			{
+				mSegMark[i] = MARK_BACKGROUND;
+			}
+			else
+			{
+				mSegMark[i] = MARK_FOREGROUND;
+			}
+		}
+	}
 }
 // 计算到高斯混合模型的距离
 // label 0:前景 1:背景
-float SPImage::GaussDistance(int label, float z[MAX_DIM])
+float SPImage::GaussDistance(int label, float* z,int dim)
 {
 	if (label == 0)
 	{
 		float diatanceFG = 1e30;
 		for (int j = 0; j < FG_GAUSS_COUNT; j++)
 		{
-			float D = GaussDistance(0, z, j);
+			float D = GaussDistance(0, z, dim, j);
 			if (D < diatanceFG)
 			{
 				diatanceFG = D;
@@ -504,7 +509,7 @@ float SPImage::GaussDistance(int label, float z[MAX_DIM])
 		float diatanceBG = 1e30;
 		for (int j = 0; j < BG_GAUSS_COUNT; j++)
 		{
-			float D = GaussDistance(1, z, j);
+			float D = GaussDistance(1, z, dim, j);
 			if (D < diatanceBG)
 			{
 				diatanceBG = D;
@@ -515,30 +520,30 @@ float SPImage::GaussDistance(int label, float z[MAX_DIM])
 }
 // 计算到高斯混合模型的距离
 // label 0:前景 1:背景
-float SPImage::GaussDistance(int label,float z[MAX_DIM],int k)
+float SPImage::GaussDistance(int label,float* z,int dim,int k)
 {
 	float D;
 	if (label == 0)
 	{
 		float D1 = 1;
 		float D2 = 0;
-		for (int i = 0; i < MAX_COLOR_DIM; i++)
+		for (int i = 0; i < dim; i++)
 		{
 			D1 *= mVarFG[k][i];
 			D2 += (z[i] - mMeansFG[k][i])*(z[i] - mMeansFG[k][i]) / mVarFG[k][i];
 		}
-		D = -mLogwFG[k] + 0.5*(log(D1) + D2) + MAX_COLOR_DIM / 2 * log(3.1415926);
+		D = -mLogwFG[k] + 0.5*(log(D1) + D2) + dim / 2 * log(3.1415926);
 	}
 	else
 	{
 		float D1 = 1;
 		float D2 = 0;
-		for (int i = 0; i < MAX_COLOR_DIM; i++)
+		for (int i = 0; i < dim; i++)
 		{
 			D1 *= mVarBG[k][i];
 			D2 += (z[i] - mMeansBG[k][i])*(z[i] - mMeansBG[k][i]) / mVarBG[k][i];
 		}
-		D = -mLogwBG[k] + 0.5*(log(D1) + D2) + MAX_COLOR_DIM / 2 * log(3.1415926);
+		D = -mLogwBG[k] + 0.5*(log(D1) + D2) + dim / 2 * log(3.1415926);
 	}
 	return  D;
 }
@@ -575,49 +580,7 @@ void RGB2Lab(float R, float G, float B, float &L, float &a, float &b)
 	a = 1.4749 * (0.2213 * R - 0.3390 * G + 0.1177 * B) + 128;
 	b = 0.6245 * (0.1949 * R + 0.6057 * G - 0.8006 * B) + 128;
 }
-// 感兴趣区域中心
-bool isCenter(int h, int w, int height, int width)
-{
-	int H = height / 5;
-	int W = width / 5;
-	if (abs(h - height/2.0) < H&&abs(w - width/2.0) < W)
-	{
-		return true;
-	}
-	return false;
-}
-// 感兴趣区域边界
-bool isBoundary(int h, int w, int height, int width)
-{
-	int H = height / 10;
-	int W = width / 10;
-	if (h < H || w < W)
-	{
-		return true;
-	}
-	if (height - h <= H || width - w <= W)
-	{
-		return true;
-	}
-	return false;
-}
-
-bool isPriorForegroud(int h, int w, int height, int width)
-{
-	const float pro = 0.4;
-	if (h < pro*height&&h < (1-pro)*height)
-	{
-		return false;
-	}
-	return true;
-}
-
-bool isPriorBackgroud(int h, int w, int height, int width)
-{
-
-	return true;
-}
-
+// 获取位置坐标参数，越靠近中心，数字越小
 int getPositionIndex(int h, int w, int height, int width)
 {
 	double pro_h = 1.0 * h / height;
